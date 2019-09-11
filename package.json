@@ -1,0 +1,52 @@
+{
+  "name": "gatsby-source-simplecast",
+  "version": "2.0.0",
+  "description": "Gatsby plugin to load podcast episodes from Simplecast.",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir . --ignore **/__tests__",
+    "watch": "babel -w src --out-dir . --ignore **/__tests__",
+    "dev": "cross-env NODE_ENV=development yarn watch",
+    "prepare": "cross-env NODE_ENV=production yarn build",
+    "test": "echo \"Error: no test specified\""
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-source",
+    "simplecast"
+  ],
+  "author": "Chance Strickland <hi@chancedigital.io>",
+  "homepage": "https://github.com/chancestrickland/gatsby-source-simplecast#readme",
+  "license": "MIT",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chancestrickland/gatsby-source-simplecast"
+  },
+  "bugs": {
+    "url": "https://github.com/chancestrickland/gatsby-source-simplecast/issues"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.0.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.6.0",
+    "gatsby-node-helpers": "^0.3.0",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "babel-eslint": "^10.0.3",
+    "babel-preset-gatsby-package": "^0.2.4",
+    "cross-env": "^5.2.1"
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  }
+}
