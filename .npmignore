@@ -17,3 +17,4 @@ examples
 .eslintrc.js
 babel.config.js
 .prettierrc
+icon.svg

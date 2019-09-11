@@ -67,7 +67,7 @@ const PodcastPage = ({
         {episodes.map(({ node }) => (
           <li key={node.id}>
             <article>
-              <h2>{node.title}</h2>
+              <h2>Episode {node.number}: {node.title}</h2>
               <p>Published {node.published_at}</p>
               <hr />
               <p>{node.description}</p>
@@ -82,7 +82,7 @@ const PodcastPage = ({
 };
 
 export const pageQuery = graphql`
-  query HomePageQuery {
+  query PodcastPageQuery {
     allSimplecastPodcastEpisode {
       edges {
         node {
