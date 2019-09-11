@@ -14,7 +14,7 @@ module.exports = {
   },
   rules: {
     'arrow-body-style': 0,
-    'no-unused-vars': 1,
+    'no-unused-vars': [1, { ignoreRestSiblings: true, args: 'none' }],
     'no-unused-expressions': 1,
     'consistent-return': 0,
     'no-console': 0,
