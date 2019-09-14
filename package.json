@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-simplecast",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Gatsby plugin to load podcast episodes from Simplecast.",
   "main": "index.js",
   "scripts": {
