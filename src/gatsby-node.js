@@ -6,10 +6,13 @@ const PodcastEpisodeNode = createNodeFactory('PodcastEpisode', node => {
 });
 
 const PLUGIN_NAME = 'gatsby-source-simplecast';
+const DEFAULTS = {
+  fetchLimit: 99
+};
 
 exports.sourceNodes = async (
   { actions: { createNode, setPluginStatus } },
-  { token, podcastId }
+  { token, podcastId, fetchLimit = DEFAULTS.fetchLimit }
 ) => {
   const errorAboutGatsbyPlugins =
     'To learn more about configuring Gatsby plugins, visit at https://www.gatsbyjs.org/docs/using-a-plugin-in-your-site/.';
@@ -28,7 +31,7 @@ exports.sourceNodes = async (
 
   try {
     const sc = new Simplecast({ token, podcastId });
-    const episodes = await sc.getEpisodes();
+    const episodes = await sc.getEpisodes(fetchLimit);
 
     episodes
       .map(episode => PodcastEpisodeNode(episode))

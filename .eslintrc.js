@@ -1,7 +1,12 @@
 module.exports = {
   parser: 'babel-eslint',
-  plugins: ['prettier', 'node'],
-  extends: ['eslint:recommended', 'prettier', 'plugin:node/recommended-script'],
+  plugins: ['prettier', 'jest', 'node'],
+  extends: [
+    'eslint:recommended',
+    'plugin:node/recommended-script',
+    'plugin:jest/recommended',
+    'plugin:prettier/recommended',
+  ],
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'script',
@@ -13,7 +18,6 @@ module.exports = {
     jest: true,
   },
   rules: {
-    'arrow-body-style': 0,
     'no-unused-vars': [1, { ignoreRestSiblings: true, args: 'none' }],
     'no-unused-expressions': 1,
     'consistent-return': 0,

@@ -20,3 +20,4 @@ package-lock.json
 # dev config files
 !.eslintrc.js
 !babel.config.js
+!setupJest.js
