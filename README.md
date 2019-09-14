@@ -4,7 +4,7 @@
   </a>
   <img aria-hidden="true" src="https://res.cloudinary.com/chancedigital/image/upload/c_scale,h_150/v1559751463/hrt.png" alt="heart icon" height="60">
   <a href="https://www.gatsbyjs.org">
-    <img alt="Simplecast icon" src="icon.svg" width="60" height="60" />
+    <img alt="Simplecast icon" src="https://svgshare.com/i/Exk.svg" width="60" height="60" />
   </a>
 </p>
 
@@ -36,10 +36,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-simplecast',
       options: {
-        // You will need to generate an access token and get the podcast ID from your account
-        // https://help.simplecast.com/en/articles/2724796-simplecast-2-0-api
         token: 'abcdefghijklmnopqrstuvwxyz1234567890',
-        // The podcast ID can be found in the URL from your podcast episode settings.
         podcastId: 'abc123de-456f-gh78-90ij-klmn1234opqr',
       },
     },
@@ -67,12 +64,14 @@ const PodcastPage = ({
         {episodes.map(({ node }) => (
           <li key={node.id}>
             <article>
-              <h2>Episode {node.number}: {node.title}</h2>
-              <p>Published {node.published_at}</p>
+              <h2>
+                Episode {node.number}: {node.title}
+              </h2>
+              <p>Published {node.publishedAt}</p>
               <hr />
               <p>{node.description}</p>
               <a href={`/podcasts/${node.slug}`}>Listen</a>
-              <a href={node.enclosure_url}>Download</a>
+              <a href={node.enclosureUrl}>Download</a>
             </article>
           </li>
         ))}
@@ -88,9 +87,9 @@ export const pageQuery = graphql`
         node {
           id
           slug
-          enclosure_url
+          enclosureUrl
           number
-          published_at(formatString: "MMMM D, Y")
+          publishedAt(formatString: "MMMM D, Y")
           title
           description
         }
@@ -101,3 +100,11 @@ export const pageQuery = graphql`
 
 export default PodcastPage;
 ```
+
+### Options API
+
+| Option     | Type                | Description                                                                                                                                    | Default |
+| :--------- | :------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------- | :------ |
+| token      | `string` (required) | Simplecast API key. See the [Simplecast API documentation](https://help.simplecast.com/en/articles/2724796-simplecast-2-0-api) for details.    |         |
+| podcastId  | `string` (required) | The ID of the podcast you want to fetch. The podcast ID can be found in the URL from your Simplecast dashboard under podcast episode settings. |         |
+| fetchLimit | `number`            | The maximum number of episodes retrieved.                                                                                                      | `99`    |
