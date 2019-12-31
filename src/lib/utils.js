@@ -1,23 +1,20 @@
 const mapObj = require('map-obj');
-const { camelCase } = require('lodash');
 const Cache = require('quick-lru');
-
 const cache = new Cache({ maxSize: 100000 });
 
-function unSlashIt(str) {
-  return str.replace(/^(\/*)|(\/*)$/g, '');
-}
-
-function leadingSlashIt(str) {
-  return '/' + unSlashIt(str);
-}
-
-function trailingSlashIt(str) {
-  return unSlashIt(str) + '/';
-}
-
-function doubleSlashIt(str) {
-  return '/' + unSlashIt(str) + '/';
+/**
+ * The most terrible camelizer on the internet, guaranteed!
+ * @param {string} str String that isn't camel-case, e.g., CAMeL_CaSEiS-harD
+ * @return {string} String converted to camel-case, e.g., camelCaseIsHard
+ */
+function camelCase(str) {
+  return str
+    .replace(/[.,-/\\!&;:{}=\-_…()@+?><[\]+~]/g, ' ')
+    .replace(/[#$%^*'"`]/g, '')
+    .replace(/(?:^\w|[A-Z]|\b\w)/g, (ltr, idx) =>
+      idx === 0 ? ltr.toLowerCase() : ltr.toUpperCase()
+    )
+    .replace(/\s+/g, '');
 }
 
 function camelCaseKeys(input, options) {
@@ -64,10 +61,27 @@ function camelCaseKeys(input, options) {
   return camelCaseConvert(input, options);
 }
 
+function doubleSlashIt(str) {
+  return '/' + unSlashIt(str) + '/';
+}
+
+function leadingSlashIt(str) {
+  return '/' + unSlashIt(str);
+}
+
+function trailingSlashIt(str) {
+  return unSlashIt(str) + '/';
+}
+
+function unSlashIt(str) {
+  return str.replace(/^(\/*)|(\/*)$/g, '');
+}
+
 module.exports = {
-  unSlashIt,
+  camelCase,
+  camelCaseKeys,
+  doubleSlashIt,
   leadingSlashIt,
   trailingSlashIt,
-  doubleSlashIt,
-  camelCaseKeys,
+  unSlashIt,
 };

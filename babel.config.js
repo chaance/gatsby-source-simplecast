@@ -2,11 +2,11 @@ module.exports = {
   presets: [
     [
       'babel-preset-gatsby-package',
-      { browser: true, debug: process.env.NODE_ENV === 'development' },
+      {
+        browser: true,
+        debug: process.env.NODE_ENV === 'development',
+        nodeVersion: '12.13'
+      },
     ],
-  ],
-  plugins: [
-    '@babel/plugin-proposal-object-rest-spread',
-    '@babel/plugin-proposal-class-properties',
   ],
 };
