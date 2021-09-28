@@ -11,6 +11,7 @@ jspm_packages
 .cache/
 .vscode
 .DS_Store
+.idea
 .yarn-integrity
 package-lock.json
 /**/*.js

@@ -37,7 +37,7 @@ class Simplecast {
     if (!episodeId) {
       throw Error('No episode ID provided.');
     }
-    return this.request(`episodes/${this.podcastId}/episodes`)
+    return this.request(`episodes/${episodeId}`)
       .then(res => res.json())
       .then(data => camelCaseKeys(data, { deep: true }))
       .catch(console.error);
