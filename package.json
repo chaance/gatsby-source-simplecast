@@ -28,7 +28,7 @@
     "url": "https://github.com/chancestrickland/gatsby-source-simplecast/issues"
   },
   "peerDependencies": {
-    "gatsby": "^2.0.0"
+    "gatsby": "^3.0.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.7.7",
